@@ -43,7 +43,9 @@ flowchart TD
 
     subgraph GET Flow
         A[Client GET /metadata] --> B[FastAPI Router]
-        B --> C{URL exists in DB?}
+        B --> V{Valid URL?}
+        V -->|No| X1[Return 422]
+        V -->|Yes| C{URL exists in DB?}
         C -->|Yes| D[Return 200 with metadata]
         C -->|No| E[Trigger Background Task]
         E --> F[Return 202 Accepted]
@@ -53,10 +55,15 @@ flowchart TD
 
     subgraph POST Flow
         P[Client POST /metadata] --> Q[FastAPI Router]
-        Q --> R[Fetch metadata via httpx]
-        R --> S[Save to MongoDB]
-        S --> T[Return 201 Created]
+        Q --> V2{Valid URL?}
+        V2 -->|No| X2[Return 422]
+        V2 -->|Yes| R[Fetch metadata via httpx]
+        R --> S{Fetch successful?}
+        S -->|No| X3[Return 502]
+        S -->|Yes| T[Save to MongoDB]
+        T --> U[Return 201 Created]
     end
+
 ```
 
 ------------------------------------------------------------------------
