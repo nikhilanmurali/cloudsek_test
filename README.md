@@ -38,7 +38,7 @@ The application follows a layered design:
 
 ### Metadata Retrieval Flow
 
-``` mermaid
+```mermaid
 flowchart TD
 
     subgraph GET Flow
