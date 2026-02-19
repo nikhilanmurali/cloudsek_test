@@ -72,7 +72,6 @@ async def test_post_fetch_failure(client, monkeypatch):
         json={"url": "https://example.com/"},
     )
 
-    # If you changed to 502, update this to 502
     assert response.status_code in (400, 502)
 
 
