@@ -59,7 +59,7 @@ flowchart TD
         V2 -->|No| X2[Return 422]
         V2 -->|Yes| R[Fetch metadata via httpx]
         R --> S{Fetch successful?}
-        S -->|No| X3[Return 502]
+        S -->|No| X3[Return 422]
         S -->|Yes| T[Save to MongoDB]
         T --> U[Return 201 Created]
     end
