@@ -15,7 +15,7 @@ from app.workers.background import trigger_background_collection
 from app.core.logging import get_logger
 
 
-router = APIRouter()
+router = APIRouter(tags=["Metadata"])
 logger = get_logger(__name__)
 
 
