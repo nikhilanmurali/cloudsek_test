@@ -86,7 +86,7 @@ Creates metadata for a given URL.
 
 -   `201 Created` -- Metadata successfully fetched and stored
 -   `422 Unprocessable Entity` -- Invalid URL
--   `502 Bad Gateway` -- Failed to fetch metadata from target URL
+-   `400 Bad Gateway` -- Failed to fetch metadata from target URL
 
 ------------------------------------------------------------------------
 
